@@ -5,14 +5,12 @@ import java.util.Objects;
 
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
+import org.springframework.stereotype.Service;
 
 import com.example.OTP.entity.Customer;
 import com.example.OTP.service.EmailService;
 
 import jakarta.mail.internet.MimeMessage;
-
-import org.springframework.stereotype.Service;
-
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
@@ -21,7 +19,7 @@ import lombok.extern.slf4j.Slf4j;
 @AllArgsConstructor
 public class EmailServiceImpl implements EmailService {
 
-    private JavaMailSender mailSender;
+    private final JavaMailSender mailSender;
 
     public String sendOtp(String email, String otp) {
         try {
