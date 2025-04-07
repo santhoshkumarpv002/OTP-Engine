@@ -21,11 +21,11 @@
 		<developer/>
 	</developers>
 	<scm>
-		<connection/>b
-		<developerConnection/>
-		<tag/>
-		<url/>
-	</scm>
+    <connection></connection>
+    <developerConnection></developerConnection>
+    <tag></tag>
+    <url></url>
+</scm>
 	<properties>
 		<java.version>21</java.version>
 	</properties>
