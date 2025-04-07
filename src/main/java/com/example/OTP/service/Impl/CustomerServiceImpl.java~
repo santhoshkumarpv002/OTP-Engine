@@ -1,0 +1,36 @@
+package com.example.OTP.service.Impl;
+
+import java.util.Optional;
+
+import org.springframework.stereotype.Service;
+
+import com.example.OTP.entity.Customer;
+import com.example.OTP.exception.ResourceAlreadyExist;
+import com.example.OTP.repository.CustomerRepository;
+import com.example.OTP.service.CustomerService;
+
+import lombok.AllArgsConstructor;
+
+
+
+@Service
+@AllArgsConstructor
+public class CustomerServiceImpl implements CustomerService {
+    private final CustomerRepository customerRepository;
+
+
+
+    @Override
+    public Customer saveCustomer(Customer customer)throws ResourceAlreadyExist{
+
+//check email alred exist
+        Optional.ofNullable(customerRepository.findByEmail(customer.getEmail())).ifPresent(existingCustomer -> {
+            throw new ResourceAlreadyExist("Email already exist");
+        });
+//save on db
+        Customer savedCustomer = customerRepository.save(customer);
+        //sent welcome mail to customer
+        return savedCustomer;
+    }
+
+}

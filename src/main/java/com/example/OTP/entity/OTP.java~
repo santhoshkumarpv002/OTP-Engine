@@ -1,0 +1,19 @@
+package com.example.OTP.entity;
+
+import jakarta.persistence.Entity;
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
+
+@AllArgsConstructor
+@NoArgsConstructor
+@Entity
+public class OTP {
+
+    private int id;
+    private String email;
+    private long otp;
+    private int retryCount;
+    private boolean isLocked;
+
+
+}
